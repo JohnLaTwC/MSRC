@@ -10,7 +10,7 @@
 ## In a normal user PowerShell:
 Import-Module MSRCSecurityUpdates -Verbose:$false
 Set-MSRCApiKey -ApiKey "your-api-key" 
-$month = Get-Date -format M |% {$_.Split(' ')[0]} + '-' + Get-Date -format yyyy
+$month = Get-Date -format M |% {$_.Split(' ')[0]} 
 $year = Get-Date -format yyyy
 $timeperiod = $year + '-' + $month
 $fname = 'MSRCSecurityUpdates' + $timeperiod + '.html'
