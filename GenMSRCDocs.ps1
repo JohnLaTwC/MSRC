@@ -13,6 +13,6 @@ Set-MSRCApiKey -ApiKey "your-api-key"
 $month = Get-Date -format M |% {$_.Split(' ')[0]} + '-' + Get-Date -format yyyy
 $year = Get-Date -format yyyy
 $timeperiod = $year + '-' + $month
-Get-MsrcCvrfDocument -ID $timeperiod  | Get-MsrcSecurityBulletinHtml | Out-File $timeperiod + 'MSRCSecurityUpdates.html'
-Invoke-Item $timeperiod  + 'MSRCSecurityUpdates.html'
-
+$fname = 'MSRCSecurityUpdates' + $timeperiod + '.html'
+Get-MsrcCvrfDocument -ID $timeperiod | Get-MsrcSecurityBulletinHtml | Out-File $fname
+Invoke-Item $fname 
