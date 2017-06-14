@@ -11,6 +11,11 @@
 Import-Module MSRCSecurityUpdates -Verbose:$false
 Set-MSRCApiKey -ApiKey "your-api-key" 
 $timeperiod = Get-Date -Format yyyy-MMM
-$fname = 'MSRCSecurityUpdates' + $timeperiod + '.html'
-Get-MsrcCvrfDocument -ID $timeperiod | Get-MsrcSecurityBulletinHtml | Out-File $fname
-Invoke-Item $fname 
+# Older style report
+#$fname = 'MSRCSecurityUpdates' + $timeperiod + '.html'
+#Get-MsrcCvrfDocument -ID $timeperiod | Get-MsrcSecurityBulletinHtml | Out-File $fname
+#Invoke-Item $fname 
+# Newer style report
+$fname_cve = 'MSRC_CVEs' + $timeperiod + '.html'
+Get-MsrcCvrfDocument -ID $timeperiod | Get-MsrcVulnerabilityReportHtml | Out-File $fname_cve
+Invoke-Item $fname_cve
